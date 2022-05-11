@@ -1,7 +1,6 @@
 const {Client,Intents} = require("discord.js");
 const {token} = require('./config.json');
-const loader = require('./loader.js')
-
+const messageCreate = require('./events/messageCreate')
 const client = new Client({ intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
@@ -12,7 +11,7 @@ const client = new Client({ intents: [
 
 
 client.on("ready", () => console.log("started!!!!!!!!!!!!!!!!!!!!!!"))
-loader(client);
+messageCreate(client)
 
 
 
