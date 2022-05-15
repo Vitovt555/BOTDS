@@ -14,16 +14,19 @@ module.exports = (client) => {
         const command = require(`../commands/${file}`);
         client.commands.set(command.name, command);
     }
-        client.on("messageCreate", async(message) => {
+    client.on('interactionCreate', async interaction => {
             
-            const args = message.content.slice(prefix.length).split(/ +/);
-            const command = args.shift().toLowerCase();
-           
+            const {commandName} = interaction
+            
         
-            if(message.author.bot || !message.content.startsWith(prefix)) return;
-            else if(command === "allo") await client.commands.get('allo').execute(message,args);
-            else if(command === "help") await client.commands.get('help').execute(message,args);
-            else await message.channel.send("?")
+            if (!interaction.isCommand()) return;
+            else if(commandName === "allo") await client.commands.get('allo').execute(interaction);
+            else if(commandName === "ping") await client.commands.get('ping').execute(interaction);
+            else if(commandName === "flip") await client.commands.get('flip').execute(interaction);
+            else if(commandName === "help") await client.commands.get('help').execute(interaction);
+            
+
+
         })
         
     

@@ -1,6 +1,7 @@
 module.exports = {
     name: 'allo',
-    async execute(message, args) {
-        await message.channel.send('Sho?');
+    execute(interaction) {
+        interaction.reply('Sho nada?');
+        // if(message.author.username === "CyberSlug") message.channel.send(":coin:");    
    }
 }
