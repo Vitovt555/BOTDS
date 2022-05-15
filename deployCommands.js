@@ -4,17 +4,12 @@ const { Routes } = require('discord-api-types/v9');
 const { clientId, guildId, token } = require('./config.json');
 
 const commands = [
-	new SlashCommandBuilder().setName('ping').setDescription('Replies with ping!'),
-	new SlashCommandBuilder().setName('server').setDescription('Replies with server info!'),
-	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
 	new SlashCommandBuilder().setName('help').setDescription('Replies'),
 	new SlashCommandBuilder().setName('allo').setDescription('Replies'),
 	new SlashCommandBuilder().setName('flip').setDescription('Replies'),
-	
-
-
+	new SlashCommandBuilder().setName('ping').setDescription('Replies'),
 ]
-	.map(command => command.toJSON());
+	// .map(command => command.toJSON());
 
 const rest = new REST({ version: '9' }).setToken(token);
 
